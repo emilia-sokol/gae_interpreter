@@ -1,0 +1,11 @@
+google
+webapp2
+GoogleAppEngineCloudStorageClient
+GoogleAppEnginePipeline
+GoogleAppEngineMapReduce
+Graphy
+simplejson
+mock
+mox
+pg8000
+werkzeug
