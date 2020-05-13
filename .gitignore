@@ -1,0 +1,9 @@
+# Default ignored files
+/workspace.xml
+*.pyc
+*.pyo
+lib/
+venv/
+
+
+.idea/
