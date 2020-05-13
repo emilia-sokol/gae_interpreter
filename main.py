@@ -15,10 +15,12 @@
 # limitations under the License.
 #
 import webapp2
+import mapreduce
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write('Hello world!')
+        self.response.write('Hello world!\n')
+        self.response.write(mapreduce.version)
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
