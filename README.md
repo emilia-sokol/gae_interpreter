@@ -1,8 +1,8 @@
-# gae Interpreter
+# GAE Interpreter
 Interpreter module for Internet of Things Ecosystem
 
 
-## Getting Started
+## 🚀 Getting Started
 
 
 #### 0. Setup
