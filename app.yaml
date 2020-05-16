@@ -9,6 +9,14 @@ handlers:
   static_files: favicon.ico
   upload: favicon\.ico
 
+# this is somehow not working
+#- url: /src/static
+#  static_dir: public
+#
+#- url: /src/static/img/(.*\.(gif|png|jpg))$
+#  static_files: static/img/\1
+#  upload: static/img/.*\.(gif|png|jpg)$
+
 - url: .*
   script: main.app
 
