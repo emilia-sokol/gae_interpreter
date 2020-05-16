@@ -15,13 +15,10 @@
 # limitations under the License.
 #
 import webapp2
-import mapreduce
+from src.ui import MainView
 
-class MainHandler(webapp2.RequestHandler):
-    def get(self):
-        self.response.write('Hello world!\n')
-        self.response.write(mapreduce.version)
 
+# Router configuration
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', MainView)
 ], debug=True)
