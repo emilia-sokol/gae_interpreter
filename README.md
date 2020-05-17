@@ -37,6 +37,14 @@ to run from terminal:
 > python /your/path/to/google-cloud-sdk/bin/dev_appserver.py --host 127.0.0.1
 ```
 
+
+#### 3. Dev tools
+format html, js or css code:
+```cmd
+> npm run prettier
+```
+
+
 ## How to use Rest API
 ##### this will be updated soon
 
@@ -57,5 +65,7 @@ to run from terminal:
 }
 ```
 - example data, JSON format
+
+
 
 

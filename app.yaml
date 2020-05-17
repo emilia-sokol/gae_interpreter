@@ -5,17 +5,13 @@ api_version: 1
 threadsafe: yes
 
 handlers:
-- url: /favicon\.ico
-  static_files: favicon.ico
-  upload: favicon\.ico
+#- url: /favicon\.ico
+#  static_files: src/static/img/favicon.ico
+#  upload: favicon\.ico
 
-# this is somehow not working
-#- url: /src/static
-#  static_dir: public
-#
-#- url: /src/static/img/(.*\.(gif|png|jpg))$
-#  static_files: static/img/\1
-#  upload: static/img/.*\.(gif|png|jpg)$
+# url is the path where files will be, static_dir is path to files in project
+- url: /static
+  static_dir: src/static
 
 - url: .*
   script: main.app

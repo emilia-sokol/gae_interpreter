@@ -7,3 +7,7 @@ venv/
 
 
 .idea/
+
+#for prettier dependency (formatting only js/html/css)
+node_modules/
+package-lock.json
