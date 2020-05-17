@@ -121,6 +121,7 @@
                 required
                 class="form-control"
                 id="exampleFormControlSelect1"
+                name="type"
               >
                 <option selected disabled value="">Type</option>
                 <option value="text">Text</option>
@@ -136,6 +137,7 @@
                 type="text"
                 class="form-control"
                 placeholder="Value"
+                name="value"
               />
             </div>
           </div>
@@ -144,7 +146,7 @@
               User ID
             </div>
             <div class="col">
-              <input type="text" class="form-control" placeholder="Key" />
+              <input type="text" class="form-control" placeholder="Key" name="key" />
             </div>
           </div>
           <input
@@ -251,7 +253,7 @@
       >
         <p class="lead my-3">Stored Files</p>
         {% for file in files %}
-        <li value="{{" file.file_key }}>
+        <li value={{ file.file_key }}>
           {{ file.file_type }}: {{ file.name }}
         </li>
         {% endfor %}
