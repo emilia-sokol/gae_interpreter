@@ -1,0 +1,22 @@
+pre {
+  outline: 1px solid #ccc;
+  padding: 5px;
+  margin: 5px;
+}
+.string {
+  color: green;
+}
+.number {
+  color: #4889f6;
+}
+.boolean {
+  color: #4889f6;
+}
+.null {
+  color: darkorange;
+}
+.key {
+  color: grey;
+}
+
+/*#4889f6 - gae logo color*/

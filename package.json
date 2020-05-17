@@ -1,0 +1,11 @@
+{
+  "name": "gaeinterpreter",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+     "prettier": "prettier --write 'src/**/*.{html,js,css}'"
+  },
+  "devDependencies": {
+    "prettier":  "2.0.5"
+  }
+}
