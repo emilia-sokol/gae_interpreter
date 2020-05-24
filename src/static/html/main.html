@@ -162,10 +162,29 @@
         </form>
 
         <p class="lead my-3">Or add data in json file</p>
-        <div class="custom-file">
-          <input type="file" class="custom-file-input" id="dataFile" />
-          <label class="custom-file-label" for="dataFile">Choose file</label>
-        </div>
+         <form
+          action="{1}"
+          method="POST"
+          enctype="multipart/form-data"
+          class="needs-validation mb-5"
+          id="data_form"
+        >
+            <div class="input-group mb-3">
+                <div
+                  id="data_file_name"
+                  class="form-control"
+                  aria-label="data_file_name"
+                >
+                  Choose file
+                </div>
+                <div class="input-group-append">
+                  <label class="input-group-text" id="data-addon">
+                    Browse
+                    <input id="data_file" type="file" name="data_file" hidden
+                  /></label>
+                </div>
+              </div>
+        </form>
         <p class="lead mt-3">Data format:</p>
         <pre id="json_example"></pre>
         <hr class="my-4" />
@@ -180,20 +199,47 @@
             Add mapper and reducer implementation in files
           </p>
           <div class="row">
+            <div class="col-md-3">
+              <input
+                required="true"
+                type="text"
+                class="form-control"
+                placeholder="User ID"
+                name="user_id"
+              />
+            </div>
             <div class="col">
-              <div class="custom-file">
-                <input type="file" class="custom-file-input" id="mapper" />
-                <label class="custom-file-label" for="mapper"
-                  >Choose mapper</label
+              <div class="input-group mb-3">
+                <div
+                  id="mapper_file_name"
+                  class="form-control"
+                  aria-label="mapper"
                 >
+                  Choose mapper
+                </div>
+                <div class="input-group-append">
+                  <label class="input-group-text" id="mapper-addon">
+                    Browse
+                    <input id="mapper_file" type="file" name="mapper" hidden
+                  /></label>
+                </div>
               </div>
             </div>
             <div class="col">
-              <div class="custom-file">
-                <input type="file" class="custom-file-input" id="reducer" />
-                <label class="custom-file-label" for="reducer"
-                  >Choose reducer</label
+              <div class="input-group mb-3">
+                <div
+                  id="reducer_file_name"
+                  class="form-control"
+                  aria-label="reducer"
                 >
+                  Choose reducer
+                </div>
+                <div class="input-group-append">
+                  <label class="input-group-text" id="reducer-addon">
+                    Browse
+                    <input id="reducer_file" type="file" name="reducer" hidden
+                  /></label>
+                </div>
               </div>
             </div>
           </div>
@@ -222,7 +268,10 @@
                 <th scope="col">Value</th>
                 <th scope="col">ID</th>
                 <th scope="col">Time</th>
-                <th scope="col"><input type="checkbox" onClick="select_all(this)" /> Delete<br/></th>
+                <th scope="col">
+                  <input type="checkbox" onClick="select_all(this)" />
+                  Delete<br />
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -257,7 +306,7 @@
       >
         <p class="lead my-3">Stored Files</p>
         {% for file in files %}
-        <li value={{ file.file_key }}>
+        <li value="{{ file.file_key }}">
           {{ file.file_type }}: {{ file.name }}
         </li>
         {% endfor %}
