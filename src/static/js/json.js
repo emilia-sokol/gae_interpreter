@@ -28,7 +28,7 @@ function syntaxHighlight(json) {
 }
 
 var obj = {
-  0: { type: "temp", value: "45,5", key: "user_id" },
+  0: { type: "temp", value: "45,5", id: "user_id" },
   1: { type: "text", value: "some important message" },
 };
 var str = JSON.stringify(obj, undefined, 4);

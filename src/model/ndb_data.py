@@ -7,7 +7,7 @@ class Data(ndb.Expando):
     # user that sends data or/and id of a device that sends data). by type we distinguish what kind of data is this
     # e.g. temperature, text (this will be used possibly by mapper and reducer functions)
 
-    key = ndb.StringProperty(default="")
+    id = ndb.StringProperty(default="")
     # user_id = ndb.StringProperty(default="")
     # device_id = ndb.StringProperty(default="")
 

@@ -15,12 +15,20 @@ class MainView(webapp2.RequestHandler):
         upload_reducer = blobstore.create_upload_url('/upload_file/reducer')
 
         files = []
+        posts = []
 
         for num, data in enumerate(File.query().fetch(), start=1):
             files.insert(num, DisplayFile(blobstore.BlobInfo.get(data.blob_key).filename, data.type, data.blob_key))
 
+        for num, data in enumerate(Data.query().fetch(), start=1):
+            post = data
+
+            # enhance post object with url_safe string, useful when deleting posts
+            post.url_safe = data.key.urlsafe()
+            posts.insert(num, post)
+
         template_values = {
-            'data': Data.query().fetch(),
+            'data': posts,
             'files': files,
         }
 
@@ -32,13 +40,13 @@ class MainView(webapp2.RequestHandler):
         )
 
     def post(self):
-        key = self.request.get('key')
+        data_id = self.request.get('id')
         data_type = self.request.get('type')
         value = self.request.get('value')
         ts = datetime.datetime.utcnow()
 
         # save data to google storage
-        Data(key=key, type=data_type, value=value, time=ts).put()
+        Data(id=data_id, type=data_type, value=value, time=ts).put()
 
         # stay on main page
         self.redirect('/')

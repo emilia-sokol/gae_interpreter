@@ -146,7 +146,12 @@
               User ID
             </div>
             <div class="col">
-              <input type="text" class="form-control" placeholder="Key" name="key" />
+              <input
+                type="text"
+                class="form-control"
+                placeholder="ID"
+                name="id"
+              />
             </div>
           </div>
           <input
@@ -208,42 +213,41 @@
         aria-labelledby="data-tab"
       >
         <p class="lead my-3">Stored Data</p>
-        <table class="table h-auto">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Type</th>
-              <th scope="col">Value</th>
-              <th scope="col">Key</th>
-              <th scope="col">Time</th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for post in data %}
-            <tr>
-              <th scope="row">{{ post.id }}</th>
-              <td>{{ post.type }}</td>
-              <td>{{ post.value }}</td>
-              <td>{{ post.key }}</td>
-              <td>{{ post.time }}</td>
-              <td>
-                <form action="/delete_post" method="post">
-                  <button
-                    value="{{"
-                    post.id
-                    }}
-                    type="submit"
-                    class="btn btn-outline-danger"
-                  >
-                    Delete
-                  </button>
-                </form>
-              </td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
+        <form action="/delete_post" method="POST">
+          <table class="table h-auto">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Type</th>
+                <th scope="col">Value</th>
+                <th scope="col">ID</th>
+                <th scope="col">Time</th>
+                <th scope="col"><input type="checkbox" onClick="select_all(this)" /> Delete<br/></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for post in data %}
+              <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ post.type }}</td>
+                <td>{{ post.value }}</td>
+                <td>{{ post.id }}</td>
+                <td>{{ post.time }}</td>
+                <td>
+                  <input
+                    type="checkbox"
+                    aria-label="to_delete"
+                    name="{{ post.url_safe }}"
+                  />
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <button type="submit" class="btn btn-outline-danger">
+            Delete
+          </button>
+        </form>
       </div>
       <div
         class="tab-pane fade"
@@ -279,4 +283,5 @@
   <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
   <script type="text/javascript" src="static/js/file.js"></script>
   <script type="text/javascript" src="static/js/json.js"></script>
+  <script type="text/javascript" src="static/js/select_all.js"></script>
 </body>

@@ -15,10 +15,20 @@
 # limitations under the License.
 #
 import webapp2
+from mapreduce.main import create_handlers_map
+
+from src.api import DeleteDataHandler
 from src.ui import MainView
 
 
+def create_app_handlers():
+    map_reduce_handlers = create_handlers_map()
+    app_handlers = [
+        ('/', MainView),
+        ('/delete_post', DeleteDataHandler),
+    ]
+    return app_handlers + map_reduce_handlers
+
+
 # Router configuration
-app = webapp2.WSGIApplication([
-    ('/', MainView)
-], debug=True)
+app = webapp2.WSGIApplication(create_app_handlers(), debug=True)
