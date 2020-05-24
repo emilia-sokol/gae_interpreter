@@ -17,7 +17,7 @@
 import webapp2
 from mapreduce.main import create_handlers_map
 
-from src.api import DeleteDataHandler, UploadAlgorithmHandler, UploadDataHandler
+from src.api import DeleteDataHandler, UploadAlgorithmHandler, UploadDataHandler, ProcessDataHandler
 from src.ui import MainView
 
 
@@ -28,6 +28,7 @@ def create_app_handlers():
         ('/delete_post', DeleteDataHandler),
         ('/upload_algorithms', UploadAlgorithmHandler),
         ('/upload_data', UploadDataHandler),
+        ('/run_pipeline/<mapper_key:([^/]+)?>/<reducer_key:([^/]+)?>', ProcessDataHandler),
     ]
     return app_handlers + map_reduce_handlers
 

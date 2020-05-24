@@ -1,0 +1,24 @@
+from google.appengine.ext.webapp import blobstore_handlers
+from google.appengine.ext import blobstore
+
+from src.mapreduce import JobPipeline
+
+
+class ProcessDataHandler(blobstore_handlers.BlobstoreDownloadHandler):
+    def get(self, mapper_key, reducer_key):
+
+        # first check if we have full algorithm implementation
+        if not blobstore.get(mapper_key) or not blobstore.get(reducer_key):
+            self.error(404)
+        else:
+            mapper_name = blobstore.BlobInfo.get(mapper_key).filename
+
+            # run data processing
+            pipeline = JobPipeline(mapper_key, reducer_key, mapper_name)
+            pipeline.start()
+
+            # for testing purposes uncomment line below
+            # print(pipeline.pipeline_id)
+
+            # redirect to see data process preview
+            self.redirect(pipeline.base_path + "/status?root=" + pipeline.pipeline_id)
