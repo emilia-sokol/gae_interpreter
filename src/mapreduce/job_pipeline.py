@@ -5,6 +5,8 @@ from mapreduce import mapreduce_pipeline
 
 from google.appengine.api import app_identity
 
+from helpers import StoreOutput
+
 
 class JobPipeline(base_handler.PipelineBase):
     """
@@ -51,5 +53,5 @@ class JobPipeline(base_handler.PipelineBase):
             },
             shards=64)
 
-        # @TODO store output
-        # yield StoreOutput(output)
+        # @TODO test and improve store output
+        yield StoreOutput(output)
