@@ -11,5 +11,5 @@ from google.appengine.ext import ndb
 class File(ndb.Model):
     type = ndb.StringProperty(default="mapper")
     user_id = ndb.StringProperty()
-    author_id = ndb.StringProperty()
+    author_id = ndb.StringProperty(default="")
     blob_key = ndb.BlobKeyProperty()
