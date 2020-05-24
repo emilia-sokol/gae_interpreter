@@ -305,11 +305,39 @@
         aria-labelledby="file-tab"
       >
         <p class="lead my-3">Stored Files</p>
-        {% for file in files %}
-        <li value="{{ file.file_key }}">
-          {{ file.file_type }}: {{ file.name }}
-        </li>
-        {% endfor %}
+         <table class="table h-auto">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Type</th>
+                <th scope="col">Name</th>
+                <th scope="col">User ID</th>
+                <th scope="col">
+                  Pick
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for file in files %}
+              <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ file.file_type }}</td>
+                <td>{{ file.name }}</td>
+                <td>{{ file.user_id }}</td>
+                <td>
+                  <input
+                    type="checkbox"
+                    aria-label="pick_implementation"
+                    name="{{ file.file_key }}"
+                  />
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+         </table>
+         <button class="btn btn-outline-success">
+            Start data processing
+         </button>
       </div>
     </div>
   </div>

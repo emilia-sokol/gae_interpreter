@@ -5,7 +5,8 @@
 
 
 class DisplayFile:
-    def __init__(self, name, file_type, file_key):
+    def __init__(self, name, file_type, file_key, user_id):
         self.name = name
         self.file_type = file_type
         self.file_key = file_key
+        self.user_id = user_id
