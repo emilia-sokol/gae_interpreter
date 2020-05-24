@@ -162,10 +162,29 @@
         </form>
 
         <p class="lead my-3">Or add data in json file</p>
-        <div class="custom-file">
-          <input type="file" class="custom-file-input" id="dataFile" />
-          <label class="custom-file-label" for="dataFile">Choose file</label>
-        </div>
+         <form
+          action="{1}"
+          method="POST"
+          enctype="multipart/form-data"
+          class="needs-validation mb-5"
+          id="data_form"
+        >
+            <div class="input-group mb-3">
+                <div
+                  id="data_file_name"
+                  class="form-control"
+                  aria-label="data_file_name"
+                >
+                  Choose file
+                </div>
+                <div class="input-group-append">
+                  <label class="input-group-text" id="data-addon">
+                    Browse
+                    <input id="data_file" type="file" name="data_file" hidden
+                  /></label>
+                </div>
+              </div>
+        </form>
         <p class="lead mt-3">Data format:</p>
         <pre id="json_example"></pre>
         <hr class="my-4" />
@@ -211,7 +230,7 @@
                 <div
                   id="reducer_file_name"
                   class="form-control"
-                  aria-label="mapper"
+                  aria-label="reducer"
                 >
                   Choose reducer
                 </div>

@@ -12,7 +12,7 @@ from src.model import DisplayFile, Data, File
 class MainView(webapp2.RequestHandler):
     def get(self):
         upload_algorithms = blobstore.create_upload_url('/upload_algorithms')
-        # upload_reducer = blobstore.create_upload_url('/upload_file/reducer')
+        upload_data = blobstore.create_upload_url('/upload_data')
 
         files = []
         posts = []
@@ -36,7 +36,7 @@ class MainView(webapp2.RequestHandler):
 
         self.response.out.write(
             # render test ui with data and uploaded files
-            template.render(template_path, template_values).format(upload_algorithms)
+            template.render(template_path, template_values).format(upload_algorithms, upload_data)
         )
 
     def post(self):
