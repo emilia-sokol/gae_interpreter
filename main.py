@@ -25,10 +25,10 @@ def create_app_handlers():
     map_reduce_handlers = create_handlers_map()
     app_handlers = [
         ('/', MainView),
-        ('/delete_post', DeleteDataHandler),
+        ('/delete_data', DeleteDataHandler),
         ('/upload_algorithms', UploadAlgorithmHandler),
         ('/upload_data', UploadDataHandler),
-        ('/run_pipeline/<mapper_key:([^/]+)?>/<reducer_key:([^/]+)?>', ProcessDataHandler),
+        ('/run_pipeline', ProcessDataHandler),
     ]
     return app_handlers + map_reduce_handlers
 

@@ -1,11 +1,14 @@
 from google.appengine.ext.webapp import blobstore_handlers
+from google.appengine.ext import ndb
 from google.appengine.ext import blobstore
 
 from src.mapreduce import JobPipeline
 
 
 class ProcessDataHandler(blobstore_handlers.BlobstoreDownloadHandler):
-    def get(self, mapper_key, reducer_key):
+    def post(self):
+        mapper_key = self.request.get('mapper')
+        reducer_key = self.request.get('reducer')
 
         # first check if we have full algorithm implementation
         if not blobstore.get(mapper_key) or not blobstore.get(reducer_key):
