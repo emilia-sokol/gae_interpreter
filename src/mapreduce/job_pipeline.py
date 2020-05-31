@@ -38,8 +38,8 @@ class JobPipeline(base_handler.PipelineBase):
 
         output = yield mapreduce_pipeline.MapreducePipeline(
             file_name,
-            mapper_spec="src.mapreduce.interpreter.mapper_interpreter",
-            reducer_spec="src.mapreduce.interpreter.reducer_interpreter",
+            mapper_spec="src.mapreduce.interpreter.py_mapper_interpreter",
+            reducer_spec="src.mapreduce.interpreter.py_reducer_interpreter",
             input_reader_spec="mapreduce.input_readers.DatastoreInputReader",
             output_writer_spec="mapreduce.output_writers.GoogleCloudStorageOutputWriter",
             mapper_params=mapper_params,

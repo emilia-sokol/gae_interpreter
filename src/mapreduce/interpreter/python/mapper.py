@@ -2,7 +2,7 @@ from mapreduce import context
 from google.appengine.ext import blobstore
 
 
-def mapper_interpreter(entity):
+def py_mapper_interpreter(entity):
     # check if this is working, import module - name provided by algorithm provider
     # @TODO add conditional imports based on mapper requirements
     coll = __import__("collections")

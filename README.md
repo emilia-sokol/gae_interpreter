@@ -27,6 +27,32 @@ Interpreter module for Internet of Things Ecosystem
 - open appengine_config.py
 - make sure that a path in vendor.add("/path/to/my/third/party/libs") is correct
 
+#### 2. JPY (POSSIBLY THIS WILL NOT BE USED)
+
+```cmd
+ > cd lib/jpy/
+ > export JDK_HOME=<your-jdk-dir>
+ > export JAVA_HOME=$JDK_HOME
+ > python get-pip.py
+
+ # optional step:
+ > sudo apt-get install python-dev
+ > python setup.py build maven bdist_wheel
+```
+
+then in python type
+```python
+import sys
+sys.path.append('build/lib-os-platform-python-version')
+```
+or copy jpy folder to site-packages directory
+
+if you have JAVA_HOME in .bashrc:
+ echo $JAVA_HOME
+if empty line:
+ . ~/.bashrc
+
+
 #### 2. Run
 - use Python 2.7 interpreter
 - add GAE SDK path 
