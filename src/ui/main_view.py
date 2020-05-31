@@ -22,7 +22,7 @@ class MainView(webapp2.RequestHandler):
                 blobstore.BlobInfo.get(data.blob_key).filename,
                 data.type,
                 data.blob_key,
-                data.user_id
+                data.user_id,
             ))
 
         for num, data in enumerate(Data.query().fetch(), start=1):

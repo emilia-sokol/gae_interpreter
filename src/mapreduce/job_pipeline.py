@@ -31,16 +31,15 @@ class JobPipeline(base_handler.PipelineBase):
 
         bucket_name = app_identity.get_default_gcs_bucket_name()
         mapper_params = {
-            # @TODO test if Data model can be imported that way
-            "entity_kind": "Data",
+            "entity_kind": "src.model.Data",
             "mapper": mapper_key,
             "reducer": reducer_key
         }
 
         output = yield mapreduce_pipeline.MapreducePipeline(
             file_name,
-            mapper_spec="main.mapper_interpreter",
-            reducer_spec="main.reducer_interpreter",
+            mapper_spec="src.mapreduce.interpreter.mapper_interpreter",
+            reducer_spec="src.mapreduce.interpreter.reducer_interpreter",
             input_reader_spec="mapreduce.input_readers.DatastoreInputReader",
             output_writer_spec="mapreduce.output_writers.GoogleCloudStorageOutputWriter",
             mapper_params=mapper_params,
