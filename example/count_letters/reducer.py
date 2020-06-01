@@ -1,0 +1,1 @@
+output.append((key, sum([int(i) for i in values])))
