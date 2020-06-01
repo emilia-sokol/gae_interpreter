@@ -10,8 +10,16 @@ handlers:
 #  upload: favicon\.ico
 
 # url is the path where files will be, static_dir is path to files in project
-- url: /static
-  static_dir: src/static
+#- url: /static
+#  static_dir: src/static
+- url: /img
+  static_dir: src/static/img
+
+- url: /js
+  static_dir: src/static/js
+
+- url: /css
+  static_dir: src/static/css
 
 - url: .*
   script: main.app

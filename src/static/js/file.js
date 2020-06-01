@@ -16,7 +16,7 @@ $(document).ready(function () {
     reducer_file_name.innerHTML = $this.val().split("\\").pop();
   });
 
-   $("input[id='data_file']").change(function (e) {
+  $("input[id='data_file']").change(function (e) {
     var $this = $(this);
     data_file_name.innerHTML = $this.val().split("\\").pop();
     form.submit();

@@ -1,4 +1,4 @@
-import subprocess
+# import subprocess
 
 from mapreduce import context
 
@@ -20,6 +20,6 @@ def r_mapper_interpreter(entity):
     cmd = [command, path2script] + args
 
     # check_output will run the command and store to result
-    x = subprocess.check_output(cmd, universal_newlines=True)
+    # x = subprocess.check_output(cmd, universal_newlines=True)
 
     print('The maximum of the numbers is:', x)
