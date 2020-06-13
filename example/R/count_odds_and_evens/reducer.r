@@ -1,0 +1,3 @@
+ reducer <- function(key, value) {
+
+ }

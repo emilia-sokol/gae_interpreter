@@ -52,8 +52,18 @@ if you have JAVA_HOME in .bashrc:
 if empty line:
  . ~/.bashrc
 
+#### 3. If having issues installing RPY2 requirement
+```cmd
+>  optional:  brew install r
+>  sudo apt install r-base-core
+>  R --version
+>  sudo apt-get install python-dev
 
-#### 2. Run
+> python -m pip install -r requirements.txt 
+
+```
+
+#### 4. Run
 - use Python 2.7 interpreter
 - add GAE SDK path 
 

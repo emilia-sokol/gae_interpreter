@@ -368,9 +368,10 @@
       >
         <form action="/run_pipeline" method="POST">
           <p class="lead my-3">
-            Choose implementation
+            Run MapReducer Pipeline
           </p>
           <div class="row">
+            <div class="col-md-2">Implementation <span class="text-danger">*</span></div>
             <div class="col">
               <select
                 required
@@ -395,6 +396,21 @@
                 {% for file in files %} {% if file.file_type == "reducer" %}
                 <option value="{{ file.file_key }}">{{ file.name }}</option>
                 {% endif %} {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-md-2">Language <span class="text-danger">*</span></div>
+            <div class="col">
+              <select
+                required
+                class="form-control"
+                id="language-pick"
+                name="language"
+              >
+                <option value="py">Python</option>
+                <option value="r">R</option>
+                <option value="java" disabled>Java</option>
               </select>
             </div>
           </div>

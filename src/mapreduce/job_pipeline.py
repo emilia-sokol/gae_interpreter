@@ -25,7 +25,7 @@ class JobPipeline(base_handler.PipelineBase):
         # @TODO add implementation
         pass
 
-    def run(self, mapper_key, reducer_key, file_name):
+    def run(self, mapper_key, reducer_key, file_name, language):
         """ run """
         logging.debug("filename is %s" % file_name)
 
@@ -38,8 +38,8 @@ class JobPipeline(base_handler.PipelineBase):
 
         output = yield mapreduce_pipeline.MapreducePipeline(
             file_name,
-            mapper_spec="src.mapreduce.interpreter.py_mapper_interpreter",
-            reducer_spec="src.mapreduce.interpreter.py_reducer_interpreter",
+            mapper_spec="src.mapreduce.interpreter." + language + "_mapper_interpreter",
+            reducer_spec="src.mapreduce.interpreter." + language + "_reducer_interpreter",
             input_reader_spec="mapreduce.input_readers.DatastoreInputReader",
             output_writer_spec="mapreduce.output_writers.GoogleCloudStorageOutputWriter",
             mapper_params=mapper_params,

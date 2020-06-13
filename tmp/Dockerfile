@@ -29,6 +29,7 @@ RUN pip install --trusted-host pypi.python.org flask
 #### OPTIONAL : 4. SET JAVA_HOME environment variable, uncomment the line below if you need it
 
 #ENV JAVA_HOME="/usr/lib/jvm/java-1.8-openjdk"
+#ENV R_HOME="/usr/lib/R"
 
 ####
 

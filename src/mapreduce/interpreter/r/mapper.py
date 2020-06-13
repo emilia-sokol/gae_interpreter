@@ -1,25 +1,25 @@
-# import subprocess
-
 from mapreduce import context
+from google.appengine.ext import blobstore
+import requests
 
 
 def r_mapper_interpreter(entity):
-    # @TODO implementation
-    # @TODO add conditional imports based on mapper requirements
+    # ctx = context.get()
+    # file_blob_key = "U-mTu_kekFHkTYYJ-gHcmQ=="
+    # reader = blobstore.BlobReader(file_blob_key)
+
     ctx = context.get()
     file_blob_key = ctx.mapreduce_spec.mapper.params['mapper']
+    reader = blobstore.BlobReader(file_blob_key)
 
-    # Define command and arguments
-    command = 'Rscript'
-    path2script = '/serve?blob-key=' + file_blob_key
+    mapper = reader.read()
 
-    # Variable number of args in a list
-    args = ['11', '3', '9', '42']
+    url = 'http://127.0.0.1:9090/upload'
+    data = {
+      "mapper": mapper,
+      "entity": entity
+    }
+    response = requests.post(url, data=data)
+    print(response)
 
-    # Build subprocess command
-    cmd = [command, path2script] + args
-
-    # check_output will run the command and store to result
-    # x = subprocess.check_output(cmd, universal_newlines=True)
-
-    print('The maximum of the numbers is:', x)
+    # yield result
