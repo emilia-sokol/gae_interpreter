@@ -14,16 +14,16 @@
     href="https://fonts.googleapis.com/icon?family=Material+Icons"
     rel="stylesheet"
   />
-  <link href="/static/css/json.css" rel="stylesheet" />
+  <link href="../css/json.css" rel="stylesheet" />
 
   <title>Ecosystem - Interpreter</title>
-  <link rel="icon" href="static/img/favicon.ico" />
+  <link rel="icon" href="../img/favicon.ico" />
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">
       <img
-        src="/static/img/logo.png"
+        src="../img/logo.png"
         width="65"
         height="50"
         class="d-inline-block align-center"
@@ -104,7 +104,7 @@
           >Files</a
         >
       </li>
-       <li class="nav-item">
+      <li class="nav-item">
         <a
           class="nav-link"
           id="process-tab"
@@ -174,28 +174,28 @@
         </form>
 
         <p class="lead my-2">Or add data in json file</p>
-         <form
+        <form
           action="{1}"
           method="POST"
           enctype="multipart/form-data"
           class="needs-validation mb-5"
           id="data_form"
         >
-            <div class="input-group mb-3">
-                <div
-                  id="data_file_name"
-                  class="form-control"
-                  aria-label="data_file_name"
-                >
-                  Choose file
-                </div>
-                <div class="input-group-append">
-                  <label class="input-group-text" id="data-addon">
-                    Browse
-                    <input id="data_file" type="file" name="data_file" hidden
-                  /></label>
-                </div>
-              </div>
+          <div class="input-group mb-3">
+            <div
+              id="data_file_name"
+              class="form-control"
+              aria-label="data_file_name"
+            >
+              Choose file
+            </div>
+            <div class="input-group-append">
+              <label class="input-group-text" id="data-addon">
+                Browse
+                <input id="data_file" type="file" name="data_file" hidden
+              /></label>
+            </div>
+          </div>
         </form>
         <p class="lead mt-2">Data format:</p>
         <pre id="json_example"></pre>
@@ -281,7 +281,10 @@
                 <th scope="col">ID</th>
                 <th scope="col">Time</th>
                 <th scope="col">
-                  <input type="checkbox" onClick="select_all(this, 'to_delete_post')" />
+                  <input
+                    type="checkbox"
+                    onClick="select_all(this, 'to_delete_post')"
+                  />
                   Delete<br />
                 </th>
               </tr>
@@ -317,8 +320,8 @@
         aria-labelledby="file-tab"
       >
         <p class="lead my-3">Stored Files</p>
-         <form action="/delete_data" method="POST">
-         <table class="table h-auto">
+        <form action="/delete_data" method="POST">
+          <table class="table h-auto">
             <thead>
               <tr>
                 <th scope="col">#</th>
@@ -326,7 +329,10 @@
                 <th scope="col">Name</th>
                 <th scope="col">User ID</th>
                 <th scope="col">
-                  <input type="checkbox" onClick="select_all(this, 'to_delete_file')" />
+                  <input
+                    type="checkbox"
+                    onClick="select_all(this, 'to_delete_file')"
+                  />
                   Delete<br />
                 </th>
               </tr>
@@ -348,59 +354,71 @@
               </tr>
               {% endfor %}
             </tbody>
-         </table>
-         <button class="btn btn-outline-danger" type="submit">
+          </table>
+          <button class="btn btn-outline-danger" type="submit">
             Delete implementation
-         </button>
-         </form>
+          </button>
+        </form>
       </div>
-       <div
+      <div
         class="tab-pane fade"
         id="process-view"
         role="tabpane1"
         aria-labelledby="file-tab"
       >
-         <form action="/run_pipeline" method="POST">
-            <p class="lead my-3">
-            Choose implementation
+        <form action="/run_pipeline" method="POST">
+          <p class="lead my-3">
+            Run MapReducer Pipeline
           </p>
-            <div class="row">
-              <div class="col">
-                 <select
+          <div class="row">
+            <div class="col-md-2">Implementation <span class="text-danger">*</span></div>
+            <div class="col">
+              <select
                 required
                 class="form-control"
                 id="mapper-pick"
                 name="mapper"
               >
                 <option selected disabled value="">Mapper</option>
-                 {% for file in files %}
-                   {% if file.file_type == "mapper" %}
-                    <option value="{{ file.file_key }}">{{ file.name }}</option>
-                   {% endif %}
-                   {% endfor %}
+                {% for file in files %} {% if file.file_type == "mapper" %}
+                <option value="{{ file.file_key }}">{{ file.name }}</option>
+                {% endif %} {% endfor %}
               </select>
-              </div>
-              <div class="col">
-                <select
+            </div>
+            <div class="col">
+              <select
                 required
                 class="form-control"
                 id="reducer-pick"
                 name="reducer"
               >
                 <option selected disabled value="">Reducer</option>
-                 {% for file in files %}
-                   {% if file.file_type == "reducer" %}
-                    <option value="{{ file.file_key }}">{{ file.name }}</option>
-                   {% endif %}
-                   {% endfor %}
+                {% for file in files %} {% if file.file_type == "reducer" %}
+                <option value="{{ file.file_key }}">{{ file.name }}</option>
+                {% endif %} {% endfor %}
               </select>
-              </div>
             </div>
-            <button class="btn btn-outline-success mt-3" type="submit">
+          </div>
+          <div class="row mt-2">
+            <div class="col-md-2">Language <span class="text-danger">*</span></div>
+            <div class="col">
+              <select
+                required
+                class="form-control"
+                id="language-pick"
+                name="language"
+              >
+                <option value="py">Python</option>
+                <option value="r">R</option>
+                <option value="java" disabled>Java</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn btn-outline-success mt-3" type="submit">
             Run mapreduce
-         </button>
-         </form>
-       </div>
+          </button>
+        </form>
+      </div>
     </div>
   </div>
   <!--  Scripts-->
@@ -420,7 +438,7 @@
     crossorigin="anonymous"
   ></script>
   <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
-  <script type="text/javascript" src="static/js/file.js"></script>
-  <script type="text/javascript" src="static/js/json.js"></script>
-  <script type="text/javascript" src="static/js/select_all.js"></script>
+  <script type="text/javascript" src="../js/file.js"></script>
+  <script type="text/javascript" src="../js/json.js"></script>
+  <script type="text/javascript" src="../js/select_all.js"></script>
 </body>

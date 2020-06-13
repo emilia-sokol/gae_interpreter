@@ -2,7 +2,7 @@ from mapreduce import context
 from google.appengine.ext import blobstore
 
 
-def reducer_interpreter(key, values):
+def py_reducer_interpreter(key, values):
 
     ctx = context.get()
     file_blob_key = ctx.mapreduce_spec.mapper.params['output_writer']['reducer']

@@ -1,5 +1,5 @@
-google
-webapp2
+google~=2.0.3
+webapp2~=2.5.2
 GoogleAppEngineCloudStorageClient
 GoogleAppEnginePipeline
 GoogleAppEngineMapReduce
@@ -9,3 +9,8 @@ mock
 mox
 pg8000
 werkzeug
+requests
+chardet==3.0.2
+idna==2.5
+urllib3>=1.21.1,<1.24
+certifi>=2017.4.17
