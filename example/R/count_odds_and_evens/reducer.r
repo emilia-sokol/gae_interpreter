@@ -1,3 +1,3 @@
- reducer <- function(key, value) {
-
+ reducer <- function(values) {
+    result <- sum(values)
  }
