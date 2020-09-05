@@ -16,8 +16,6 @@ def r_reducer_interpreter(key, values):
     reducer = reader.read()
 
     print("r_reducer_interpreter")
-    print(key)
-    print(values)
 
     url = 'http://127.0.0.1:9090/upload_reducer'
     data = {
