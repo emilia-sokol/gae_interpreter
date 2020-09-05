@@ -1,7 +1,9 @@
  mapper <- function(num) {
+    resultList <- list()
     if((num %% 2) == 0) {
-        result <- 0
+        resultList[[ "even" ]] <- num
     } else {
-        result <- 1
+        resultList[[ "odd" ]] <- num
     }
+    result <- resultList
  }

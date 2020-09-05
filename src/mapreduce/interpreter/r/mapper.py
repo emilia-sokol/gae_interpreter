@@ -17,9 +17,14 @@ def r_mapper_interpreter(entity):
     url = 'http://127.0.0.1:9090/upload'
     data = {
       "mapper": mapper,
-      "entity": entity
+      "entity": entity.value
     }
     response = requests.post(url, data=data)
-    print(response)
+    print("RESPONSE")
+    print(response.json())
+    response_json = response.json()
 
-    # yield result
+    for key in response_json.keys():
+        yield key, response_json[key]
+    # what mapper should return ???
+    # Got bad tuple of length 1 (2-tuple expected): {u'even': u'4'}

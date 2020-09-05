@@ -18,12 +18,13 @@ class MainView(webapp2.RequestHandler):
         posts = []
 
         for num, data in enumerate(File.query().fetch(), start=1):
-            files.insert(num, DisplayFile(
-                blobstore.BlobInfo.get(data.blob_key).filename,
-                data.type,
-                data.blob_key,
-                data.user_id,
-            ))
+            if blobstore.BlobInfo.get(data.blob_key) is not None:
+                files.insert(num, DisplayFile(
+                    blobstore.BlobInfo.get(data.blob_key).filename,
+                    data.type,
+                    data.blob_key,
+                    data.user_id,
+                ))
 
         for num, data in enumerate(Data.query().fetch(), start=1):
             post = data
