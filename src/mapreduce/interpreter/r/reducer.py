@@ -17,7 +17,7 @@ def r_reducer_interpreter(key, values):
 
     print("r_reducer_interpreter")
 
-    url = 'http://127.0.0.1:9090/upload_reducer'
+    url = 'http://127.0.0.1:9090/upload_reducer_r'
     data = {
         "reducer": reducer,
         "values": values
