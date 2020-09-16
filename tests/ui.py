@@ -11,7 +11,7 @@ class TestHandlers(unittest.TestCase):
         # You can also pass headers, query arguments etc.
         request = webapp2.Request.blank('/')
         # Get a response for that request.
-        request.method = 'POST'
+        request.method = 'GET'
         response = request.get_response(main.app)
 
         # Let's check if the response is correct.

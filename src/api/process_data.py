@@ -11,6 +11,10 @@ class ProcessDataHandler(blobstore_handlers.BlobstoreDownloadHandler):
         reducer_key = self.request.get('reducer')
         language = self.request.get('language')
 
+        print(mapper_key)
+        print(reducer_key)
+        print(language)
+
         # first check if we have full algorithm implementation
         if not blobstore.get(mapper_key) or not blobstore.get(reducer_key):
             self.error(404)

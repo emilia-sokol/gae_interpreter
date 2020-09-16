@@ -9,8 +9,10 @@ mock
 mox
 pg8000
 werkzeug
-requests
+requests~=2.23.0
 chardet==3.0.2
 idna==2.5
 urllib3>=1.21.1,<1.24
 certifi>=2017.4.17
+
+WebTest~=2.0.35

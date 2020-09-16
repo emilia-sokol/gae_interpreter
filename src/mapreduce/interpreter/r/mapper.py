@@ -14,7 +14,7 @@ def r_mapper_interpreter(entity):
 
     mapper = reader.read()
 
-    url = 'http://127.0.0.1:9090/upload'
+    url = 'http://127.0.0.1:9090/upload_mapper_r'
     data = {
       "mapper": mapper,
       "entity": entity.value

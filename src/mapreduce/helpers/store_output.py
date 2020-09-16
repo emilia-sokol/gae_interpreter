@@ -1,8 +1,11 @@
+import datetime
+
 import pipeline
 
 from google.appengine.ext import blobstore
+from google.appengine.api.runtime import runtime
 
-from src.model import Output
+from src.model import Output, Execution
 
 
 class StoreOutput(pipeline.Pipeline):
@@ -21,6 +24,8 @@ class StoreOutput(pipeline.Pipeline):
         pass
 
     def run(self, output):
+        Execution(type="cpu", value=runtime.cpu_usage().total(), time=datetime.datetime.utcnow()).put()
+        Execution(type="memory", value=runtime.memory_usage().current(), time=datetime.datetime.utcnow()).put()
         for out in output:
             blobstore_filename = "/gs" + out
             blobstore_gs_key = blobstore.create_gs_key(blobstore_filename)
